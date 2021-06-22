@@ -1,0 +1,86 @@
+<h1 class="display-5">List all cats</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Color</th>
+        <th>Gender</th>
+        <th>Photo</th>
+        <th>#</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each cats}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td><a href="/cats/{{this.id}}"> {{this.name}}</a></td>
+            <td>{{this.age}}</td>
+            <td>{{this.colorName}}</td>
+            <td>
+                {{#if this.gender}}
+                    кот
+                {{else}}
+                    кошка
+                {{/if}}
+
+            </td>
+            <td>
+                <img src="{{this.photo}}" class="thmb" alt="">
+            </td>
+            <td>
+                    <input type="hidden"  name="_method" value="DELETE">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <a href="/cats/{{this.id}}" class="btn btn-outline-primary">View</a>
+                        <a href="/cats/red/{{this.id}}" class="btn btn-outline-primary">Edit</a>
+                        {{!-- <button type="button" name="_edit" class="btn btn-outline-primary">Edit</button> --}}
+                        <input type="submit" onclick="return confirm('you want to remove the cat?');" 
+                         value="Delete" class="btn btn-outline-primary">   </div>  
+                </form>
+            </td>
+        </tr>
+    {{/each}}
+    </tbody>
+    {{#pagination page total}}
+    <nav aria-label="Page navigation example">
+    <ul class="pagination">
+            {{#unless firstPage}}
+                <li class="page-item">
+                    <a class="page-link" href="/cats" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {{/unless}}
+
+            {{#each pages}}
+                {{#if isCurrent}}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="/cats?page={{page}}">
+                            {{page}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#unless isCurrent}}
+                    <li class="page-item {{#if disabled}}disabled{{/if}}">
+                        <a class="page-link" href="/cats?page={{page}}" {{#if disabled}} aria-disabled="true"{{/if}}>
+                            {{page}}
+                        </a>
+                    </li>
+                {{/unless}}
+            {{/each}}
+
+            {{#unless lastPage}}
+                <li class="page-item">
+                    <a class="page-link" href="/cats?page={{total}}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {{/unless}}
+    </ul>
+    </nav>
+
+    {{/pagination}}
+</table>

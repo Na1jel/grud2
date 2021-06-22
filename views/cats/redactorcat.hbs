@@ -1,0 +1,55 @@
+<h1 class="display-5">redactor a cat</h1>
+<form action="/cats/red/{{this.id}}" method="post" enctype="application/x-www-form-urlencoded">
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">name</label>
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      id="name"
+      id="formGroupExampleInput"
+      placeholder="Name"
+      value="{{cat.name}}"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">age</label>
+    <input
+      type="text"
+      class="form-control"
+      name="age"
+      id="age"
+      id="formGroupExampleInput2"
+      placeholder="Age"
+      value="{{cat.age}}"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">color</label>
+    <input
+      type="text"
+      class="form-control"
+      name="color"
+      id="color"
+      id="formGroupExampleInput2"
+      placeholder="Color"
+      value="{{cat.color}}"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">gender</label>
+    <input
+      type="text"
+      class="form-control"
+      name="gender"
+      id="gender"
+      id="formGroupExampleInput2"
+      placeholder="Gender"
+      value="{{cat.gender}}"
+    />
+  </div>
+      <div class="mb-3">
+      <a href="/cats"><input type="submit" value="redactor" class="btn btn-info"></a>  
+    </div>
+  <a class="dropdown-item" href="/cats">Back to list</a>  
+</form>
